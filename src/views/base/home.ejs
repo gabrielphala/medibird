@@ -1,0 +1,39 @@
+<div class="container">
+    <%- include('../partials/header/main') %>
+
+    <div class="container__showcase">
+        <div class="container__showcase__background image--back" style="background-image: url('/assets/backgrounds/five.jpg');"></div>
+        <div class="container__showcase__caption">
+            <h1 class="flex">
+                <span>Be mindful</span>
+                <span style="color: #f50057;">of</span>
+                <span>Your health</span>
+            </h1>
+        </div>
+        <div class="container__showcase__browse">
+            <h4>learn more</h4>
+            <a class="btn btn--primary" href="/search">Browse diseases &amp; conditions</a>
+        </div>
+    </div>
+
+    <div class="container__explore">
+        <div class="container__explore__title">
+            <h1>Explore the latest diseases &amp; conditions</h1>
+            <div class="container__explore__title__hr"></div>
+        </div>
+        <div class="container__explore__diseases">
+            <% for (let i = 0; i < diseases.length; i++) { %>
+                <div class="container__explore__diseases__item flex">
+                    <div class="container__explore__diseases__item__details">
+                        <h4><a href="/<%= diseases[i].urlSafeName %>"><%= diseases[i].name %></a></h4>
+                        <p><%= diseases[i].overview[0].substring(0, diseases[i].overview[0].length > 280 ? 280 : diseases[i].overview[0].length) %></p>
+                    </div>
+                    <div class="container__explore__diseases__item__background image--back" style="background-image: url('/assets/uploads/diseases/<%= diseases[i].thumbnails[0].filename %>');"></div>
+                </div>
+            <% } %>
+        </div>
+
+        <h4 class="container__explore__to-search">Go to search</h4>
+    </div>
+
+</div>

@@ -1,0 +1,33 @@
+<div class="container">
+    <%- include('../partials/header/main') %>
+
+    <div class="container__home">
+        <div class="container__home__title">
+            <h1>Search</h1>
+            <p>Search diseases & conditions</p>
+        </div>
+        <div class="container__home__main">
+            <div class="search flex flex--a-center">
+                <div class="search__box">
+                    <div class="input">
+                        <input type="text" id="search-query" placeholder="Search by symptoms">
+                    </div>
+                </div>
+                <div class="search__list" id="search-list"></div>
+                <div class="search__empty-placeholder hide" id="empty-search">
+                    <img src="/assets/illustrations/search.svg" alt="">
+                    <p>Start searching diseases & condtions by their symptoms</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/dist/jquery.js"></script>
+<script type="module">
+    import Disease from "/assets/js/src/auth/Disease.js"
+
+    $('#search-query').on('keyup', e => {
+        Disease.search(e.currentTarget.value);
+    })
+</script>

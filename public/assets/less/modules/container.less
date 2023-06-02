@@ -1,0 +1,184 @@
+.container{
+    &__main{
+        position: relative;
+        padding-left: 30rem;
+
+        &--sidenav-closed{
+            padding-left: 5.5rem;
+        }
+
+        &__title{
+            padding: 8rem 3rem 0;
+
+            p{
+                color: #999;
+            }
+
+            &__hr{
+                height: 2px;
+                width: 15rem;
+                background-color: #3f7bde;
+                margin: 1rem 0 3rem;
+            }
+        }
+
+        &__center{
+            padding: 0 15%;
+        }
+    }
+
+    &__home{
+        padding-top: 7rem;
+
+        &__title{
+            margin-bottom: 2rem;
+            padding: 0 5rem;
+        }
+
+        &__nav{
+            border-bottom: 1px solid #eee;;
+            padding: 0 5rem;
+
+            &__ul{
+                &__item{
+                    border-bottom: 2px solid transparent;
+                    padding: 1rem 0;
+                    
+                    &:not(:last-child) {
+                        margin-right: 2rem;
+                    }
+
+                    &:hover{
+                        color: lighten(#f50057, 10%) !important;
+                        cursor: pointer;
+                    }
+
+                    &--current{
+                        color: #f50057;
+                        border-bottom-color: #f50057;
+                    }
+                }
+            }
+        }
+
+        &__main{
+            padding: 4rem 5rem 0;
+            width: 60%;
+            margin: 0 auto;
+
+            &__details{
+                &__text{
+                    flex: 1;
+                    margin-right: 2rem;
+                }
+
+                &__images{
+                    flex: 0 0 30rem;
+
+                    &__item{
+                        &:not(:last-child) {
+                            margin-bottom: 4rem;
+                        }
+
+                        img{
+                           width: 30rem; 
+                           border-radius: 4px;
+                           margin-bottom: 1rem;
+                        }
+                    }
+                }
+
+                &__treatment{
+                    h1{
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+    }
+
+    &__showcase{
+        position: relative;
+        color: #fff;
+
+        &__background{
+            height: 45rem;
+            filter: brightness(.6);
+        }
+
+        &__caption{
+            position: absolute;
+            left: 5rem;
+            bottom: 3rem;
+            
+            h1{
+                flex-direction: column;
+                font-size: 3.5rem;
+            }
+        }
+
+        &__browse{
+            position: absolute;
+            right: 5rem;
+            bottom: 3rem;
+
+            h4{
+                margin-bottom: 1rem;
+                text-align: right;
+            }
+        }
+    }
+
+    &__explore{
+        width: 60rem;
+        margin: 11rem auto 3rem;
+
+        &__title{
+            margin-bottom: 3rem;
+            &__hr{
+                height: 1px;
+                width: 30rem;
+                background-color: #f50057;
+            }
+        }
+
+        &__to-search{
+            margin-top: 2rem;
+            color: #f50057;
+        }
+
+        &__diseases{
+            &__item{
+                min-height: 2rem;
+                border-radius: 6px;
+                overflow: hidden;
+                
+                &:not(:last-child){
+                    margin-bottom: 2rem;
+                }
+
+                &:nth-child(odd){
+                    background-color: #e4e4e4;
+
+                    .container__explore__diseases__item__details{
+                        order: 2;
+                    }
+
+                    .container__explore__diseases__item__background{
+                        order: 1;
+                    }
+                }
+
+                &__details{
+                    flex: 1;
+                    padding: 1rem;
+                }
+
+                &__background{
+                    min-height: 15rem;
+                    flex: 0 0 20rem;
+                }
+            }
+        }
+    }
+}

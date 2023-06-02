@@ -1,0 +1,46 @@
+<div class="auth">
+    <div class="auth__main">
+        <div class="auth__main__header flex flex--a-center flex--j-center">
+            <img src="/assets/illustrations/logo.svg" alt="logo">
+            <div>
+                <h4>MEDIBIRD</h4>
+                <p>Be mindful</p>
+            </div>
+        </div>
+        <form class="auth__main__form card">
+            <div class="card__header card__header--no-border">
+                <p>Sign in</p>
+            </div>
+            <div class="card__body">
+                <p id="auth-error" style="color: darkred; margin-bottom: 1rem; font-weight: bold;" class="hide">err</p>
+
+                <div class="input">
+                    <input type="text" id="identifier" placeholder="Username or Email address">
+                </div>
+
+                <div class="input">
+                    <input type="password" id="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="card__footer card__footer--no-border">
+                <button class="btn btn--primary">Sign in</button>
+            </div>
+        </form>
+        <div class="auth__main__footer flex flex--j-space-around">
+            <p>No account? <a href="/sign-up">Sign up</a></p>
+            <p>Terms of use</p>
+            <p>Privacy policy</p>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/dist/jquery.js"></script>
+<script type="module">
+    import User from "/assets/js/src/auth/User.js"
+
+    $('.auth__main__form').on('submit', e => {
+        e.preventDefault();
+
+        User.signIn();
+    });
+</script>

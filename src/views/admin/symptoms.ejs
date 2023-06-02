@@ -1,0 +1,102 @@
+<div class="container">
+    <%- include('../partials/sidenav/admin') %>
+    <div class="container__main container__main--sidenav-closed">
+        <%- include('../partials/header/admin') %>
+
+        <div class="container__main__title">
+            <h1>Symptoms</h1>
+            <p>Monitor, manage and create new symptoms from here.</p>
+            <div class="container__main__title__hr"></div>
+        </div>
+
+        <div class="container__main__center">
+            <div class="card table">
+                <div class="table__header">
+                    <ul class="table__header__row flex">
+                        <li class="table__header__row__item">#</li>
+                        <li class="table__header__row__item">Name</li>
+                        <li class="table__header__row__item">Description</li>
+                        <li class="table__header__row__item">Severity</li>
+                        <li class="table__header__row__item">...</li>
+                    </ul>
+                </div>
+                <div class="table__body" id="symptom-list">
+                    <ul class="table__body__row"></ul>
+                </div>
+                <div class="card__body empty flex flex--a-center flex--j-center" id="no-symptoms">
+                    <img src="/assets/illustrations/no-data.svg" alt="No data">
+                    <div class="empty_caption">
+                        <h1>Symptoms not found</h1>
+                        <p>There are no symptoms in the database at the moment</p>
+                        <p>Any symptoms added will appear here</p>
+                    </div>
+                </div>
+            </div>
+            <h4 class="flex flex--a-center margin--top-2 open-symptom-modal">
+                <svg class="image--icon margin--right-1">
+                    <use href="#add"></use>
+                </svg>
+                <span>Add new</span>
+            </h4>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal--closed" id="symptom-modal">
+    <form class="modal__main card" id="new-symptom-form">
+        <div class="card__header card__header--no-border flex flex--a-center flex--j-space-between">
+            <div class="card__header__left">
+                <h1>New symptom</h1>
+                <p>Symptom information</p>
+            </div>
+            <svg class="image--icon close-symptom-modal">
+                <use href="#cross"></use>
+            </svg>
+        </div>
+        <div class="card__body">
+            <p id="new-symptom-error" class="hide" style="margin-bottom: 1rem; color: darkred;">Error: something went wrong</p>
+        
+            <div class="input" style="margin-bottom: 1.1rem;">
+                <input type="text" id="symptom-name" placeholder="Symptom">
+            </div>
+
+            <label for="symptom-severity">Severity</label>
+            <div class="input" style="margin-bottom: 1.1rem;">
+                <select id="symptom-severity">
+                    <option value="select">Select</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                    <option value="extreme">Extreme</option>
+                </select>
+            </div>
+        
+            <div class="input">
+                <textarea name="" id="symptom-description" placeholder="Short symptom description"></textarea>
+            </div>
+        </div>
+        <div class="card__footer">
+            <button class="btn btn--primary">Add</button>
+            <button class="btn close-symptom-modal" type="button">Cancel</button>
+        </div>
+    </form>
+</div>
+
+<script src="/assets/js/dist/jquery.js"></script>
+<script type="module">
+    import Symptom from "/assets/js/src/auth/Symptom.js"
+
+    import { closeModal, openModal } from "/assets/js/src/helpers/modal.js"
+
+    $('.open-symptom-modal').on('click', e => openModal('symptom'))
+
+    $('.close-symptom-modal').on('click', e => closeModal('symptom'))
+
+    $('#new-symptom-form').on('submit', e => {
+        e.preventDefault();
+
+        Symptom.add();
+    })
+
+    Symptom.getAll()
+</script>

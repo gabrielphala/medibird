@@ -1,0 +1,55 @@
+<div class="login flex">
+    <div class="login__illustration">
+        <div class="login__illustration__main pos pos--center">
+            <img src="/assets/illustrations/welcome.svg" alt="">
+            <h1>Welcome</h1>
+            <p>Sign in to log your repair requests.</p>
+        </div>
+    </div>
+    <form class="login__form" id="login-form">
+        <div class="login__form__header">
+            <div class="login__form__header__logo flex flex--a-center">
+                <img src="/assets/illustrations/logo.svg" alt="logo">
+                <h1>fixit</h1>
+            </div>
+            <div class="login__form__header__title">
+                <h1>Log in</h1>
+                <p>Managing requests made easy.</p>
+            </div>
+        </div>
+        <div class="basic-error-container flex--a-center hide" id="login-error">
+            <svg class="image--icon margin--right-1">
+                <use href="#exclamation"></use>
+            </svg>
+            <h4>Here</h4>
+        </div>
+        <div class="login__form__body">
+            <div class="input">
+                <input type="text" id="user-id" placeholder="Student No or Staff No">
+            </div>
+            <div class="input">
+                <input type="password" id="user-password" placeholder="Password">
+            </div>
+
+            <button class="btn btn--primary">Log in</button>
+        </div>
+        <div class="login__form__footer flex flex--j-space-around">
+            <p>Privacy Policy</p>
+            <p>Cookie Policy</p>
+            <p>Terms of use</p>
+        </div>
+    </form>
+</div>
+
+
+<script src="/assets/js/dist/jquery.js"></script>
+
+<script type="module">
+    import User from "/assets/js/src/auth/User.js"
+
+    $('#login-form').on('submit', e => {
+        e.preventDefault();
+
+        User.sign_in()
+    });
+</script>

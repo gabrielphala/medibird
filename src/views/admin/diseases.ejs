@@ -1,0 +1,246 @@
+<div class="container">
+    <%- include('../partials/sidenav/admin') %>
+    <div class="container__main container__main--sidenav-closed">
+        <%- include('../partials/header/admin') %>
+
+        <div class="container__main__title">
+            <h1>Diseases & Conditions</h1>
+            <p>Add, edit, and remove new conditions / diseases.</p>
+            <div class="container__main__title__hr"></div>
+        </div>
+
+        <div class="container__main__center">
+            <div class="card table" id="tracker-table-container">
+                <div class="table__header">
+                    <ul class="table__header__row flex">
+                        <li class="table__header__row__item table__header__row__item--short">#</li>
+                        <li class="table__header__row__item">Name</li>
+                        <li class="table__header__row__item table__header__row__item--big">Description</li>
+                        <li class="table__header__row__item">...</li>
+                    </ul>
+                </div>
+                <div class="table__body" id="disease-list">
+                    <ul class="table__body__row"></ul>
+                </div>
+                <div class="card__body empty hide flex--a-center flex--j-center" id="no-diseases">
+                    <img src="/assets/illustrations/no-data.svg" alt="No data">
+                    <div class="empty_caption">
+                        <h1>Symptoms not found</h1>
+                        <p>There are no symptoms in the database at the moment</p>
+                        <p>Any symptoms added will appear here</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn--primary margin--top-2 open-disease-modal">Add new disease</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal--closed" id="disease-modal">
+    <div class="modal__main card flex flex--a-start" id="slide-parent" style="overflow: hidden;">
+        <form style="flex: 0 0 100%; transition: margin .7s ease-out;" id="disease-overview-form">
+            <div class="card__header card__header--no-border flex flex--a-center flex--j-space-between">
+                <div class="card__header__left">
+                    <h1>New disease</h1>
+                    <p>Description &amp; Overview</p>
+                </div>
+                <svg class="image--icon close-disease-modal">
+                    <use href="#cross"></use>
+                </svg>
+            </div>
+            <div class="card__body">
+                <p id="new-overview-error" class="hide" style="margin-bottom: 1rem; color: darkred;">Error: something went wrong</p>
+
+                <input type="number" id="paragraph-count" value="1" hidden>
+
+                <div class="input" style="margin-bottom: 1.1rem;">
+                    <input type="text" id="disease-name" placeholder="Disease name">
+                </div>
+
+                <div class="paragraph-container">
+                    <div class="paragraph-container__item flex flex--a-center" id="paragraph-item-1">
+                        <div class="input">
+                            <textarea class="paragraph-input" id="paragraph-1" placeholder="Paragraph"></textarea>
+                        </div>
+                        <svg class="image--icon" id="delete-item-1">
+                            <use href="#cancel"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="card__footer">
+                <button class="btn btn--primary">Next</button>
+                <button class="btn" type="button" id="add-paragraph">Add paragraph</button>
+                <button class="btn close-disease-modal" type="button">Cancel</button>
+            </div>
+        </form>
+        <form style="flex: 0 0 100%; transition: margin .7s ease-out;" id="disease-symptoms-form">
+            <div class="card__header card__header--no-border flex flex--a-center flex--j-space-between">
+                <div class="card__header__left">
+                    <h1>New disease</h1>
+                    <p>Symptoms</p>
+                </div>
+                <svg class="image--icon close-disease-modal">
+                    <use href="#cross"></use>
+                </svg>
+            </div>
+            <div class="card__body">
+                <p id="symptom-add-error" class="hide" style="margin-bottom: 1rem; color: darkred;">Error: something went wrong</p>
+
+                <p>Select symptoms that match the disease / condition</p>
+                <input type="text" id="disease-id" hidden>
+
+                <div id="symptom-selection-container" style="max-height: 18rem; overflow-y: auto;">
+                    <input type="text" id="symptom-count" value="1" hidden>
+                    <div class="input" id="symptom-item-1" style="margin-top: 1.4rem;">
+                        <label for="symptom-1" id="symptom-1-label">Symptom: 1</label>
+                        <div class="flex flex--a-center">
+                            <select id="symptom-1" class="symptoms__item" style="flex: 1;">
+                                <option value="select">Select</option>
+                            </select>
+                            <svg class="image--icon" style="margin-left: 1rem; fill: #b68c8c;" id="delete-symptom-1">
+                                <use href="#cancel"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card__footer">
+                <button class="btn btn--primary">Next</button>
+                <button class="btn" type="button" id="add-symptom">Add Symptom</button>
+                <button class="btn close-disease-modal" type="button">Cancel</button>
+            </div>
+        </form>
+        <form style="flex: 0 0 100%; transition: margin .7s ease-out;" id="disease-treatments-form">
+            <div class="card__header card__header--no-border flex flex--a-center flex--j-space-between">
+                <div class="card__header__left">
+                    <h1>New disease</h1>
+                    <p>Diagnosis &amp; Treatment</p>
+                </div>
+                <svg class="image--icon close-disease-modal">
+                    <use href="#cross"></use>
+                </svg>
+            </div>
+            <div class="card__body">
+                <p id="treatment-add-error" class="hide" style="margin-bottom: 1rem; color: darkred;">Error: something went wrong</p>
+        
+                <input type="number" id="treatment-count" value="1" hidden>
+        
+                <div class="treatment-container">
+                    <div class="treatment-container__item flex flex--a-start" id="treatment-1">
+                        <div class="inputs treatment_item" style="flex: 1; margin-right: 1rem;">
+                            <div class="input">
+                                <textarea placeholder="Treatment title"></textarea>
+                            </div>
+                            <div class="input">
+                                <textarea placeholder="treatment description"></textarea>
+                            </div>
+                        </div>
+                        <svg class="image--icon" id="delete-treatment-1" style="fill: #b68c8c;">
+                            <use href="#cancel"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="card__footer">
+                <button class="btn btn--primary">Next</button>
+                <button class="btn" type="button" id="add-treatment">Add treatment</button>
+                <button class="btn close-disease-modal" type="button">Cancel</button>
+            </div>
+        </form>
+        <form style="flex: 0 0 100%; transition: margin .7s ease-out;" id="disease-thumbnails-form">
+            <div class="card__header card__header--no-border flex flex--a-center flex--j-space-between">
+                <div class="card__header__left">
+                    <h1>New disease</h1>
+                    <p>Thumbnail images</p>
+                </div>
+                <svg class="image--icon close-disease-modal">
+                    <use href="#cross"></use>
+                </svg>
+            </div>
+            <div class="card__body">
+                <p id="thumbnail-add-error" class="hide" style="margin-bottom: 1rem; color: darkred;">Error: something went wrong</p>
+        
+                <input type="number" id="thumbnail-count" value="1" hidden>
+        
+                <div class="thumbnail-container">
+                    <div class="thumbnail-container__item flex flex--a-start" id="thumbnail-1">
+                        <div class="inputs thumbnail_item" style="flex: 1; margin-right: 1rem;">
+                            <div class="input">
+                                <input type="file">
+                            </div>
+                            <div class="input margin--top-2">
+                                <input type="text" id="" placeholder="Image title">
+                            </div>
+                            <div class="input margin--top-2">
+                                <input type="text" id="" placeholder="Short description">
+                            </div>
+                        </div>
+                        <svg class="image--icon" id="delete-thumbnail-1" style="fill: #b68c8c;">
+                            <use href="#cancel"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="card__footer">
+                <button class="btn btn--primary">Next</button>
+                <button class="btn" type="button" id="add-thumbnail">Add thumbnail</button>
+                <button class="btn close-thumbnail-modal" type="button">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/assets/js/dist/jquery.js"></script>
+<script type="module">
+    import Disease from "/assets/js/src/auth/Disease.js"
+    import Slider from "/assets/js/src/Helpers/disease-form.js"
+
+    import { openModal, closeModal } from "/assets/js/src/Helpers/modal.js"
+    import { createParagraph, removeParagraph } from "/assets/js/src/helpers/paragraph-selection.js"
+    import { createTreatment, removeTreatment } from "/assets/js/src/helpers/treatment-selection.js"
+    import { createSymptom, removeSymptom } from "/assets/js/src/helpers/symptom-selection.js"
+
+    $('.open-disease-modal').on('click', e => openModal('disease'))
+    $('.close-disease-modal').on('click', e => closeModal('disease'))
+
+    $('#add-paragraph').on('click', e => createParagraph())
+
+    $('#delete-item-1').on('click', e => removeParagraph(1))
+
+    $('#add-symptom').on('click', e => createSymptom())
+
+    $('#delete-symptom-1').on('click', e => removeSymptom(1))
+
+    $('#add-treatment').on('click', e => createTreatment())
+
+    $('#delete-treatment-1').on('click', e => removeTreatment(1))
+
+    $('#disease-overview-form').on('submit', e => {
+        e.preventDefault();
+
+        Disease.addOverview();
+    })
+
+    $('#disease-symptoms-form').on('submit', e => {
+        e.preventDefault();
+
+        Disease.addSymptoms();
+    });
+
+    $('#disease-treatments-form').on('submit', e => {
+        e.preventDefault();
+
+        Disease.addTreatments();
+    });
+
+    $('#disease-thumbnails-form').on('submit', e => {
+        e.preventDefault();
+
+        Disease.addThumbnails();
+    });
+
+    Slider.nextHeightControl();
+    Disease.getAll();
+</script> 

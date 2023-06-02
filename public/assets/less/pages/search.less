@@ -1,0 +1,26 @@
+.search{
+    flex-direction: column;
+
+    &__box{
+        width: 100%;
+        margin-bottom: 3rem;
+    }
+
+    &__list{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+
+        .card__footer{
+            min-height: 20rem;
+        }
+    }
+
+    &__empty-placeholder{
+        img{
+            width: 20rem;
+            margin: 0 auto 3rem;
+        }
+    }
+}
