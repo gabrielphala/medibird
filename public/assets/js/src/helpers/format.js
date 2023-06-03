@@ -5,12 +5,14 @@ export const formatSymptomsForAdmin = (symptoms) => {
 
     symptoms.forEach(symptom => {
         formated += `
-            <ul class="table__body__row table__body__row--symptom" data-symptomid="${symptom.id}">
+            <ul class="table__body__row table__body__row--symptom" data-symptomid="${symptom._id}">
                 <li class="table__body__row__item">${count++}</li>
                 <li class="table__body__row__item">${symptom.name}</li>
                 <li class="table__body__row__item">${shortenStr(symptom.description)}</li>
                 <li class="table__body__row__item">${symptom.severity}</li>
-                <li class="table__body__row__item">action here</li>
+                <li class="table__body__row__item flex flex--a-center" style="justify-content: end">
+                    <svg class="table__body__row__item__delete image--icon"> <use href="#trash"></use> </svg>
+                </li>
             </ul>
         `;
     });
@@ -29,7 +31,6 @@ export const formatDiseasesForAdmin = (diseases) => {
                 <li class="table__body__row__item table__body__row__item--big">${shortenStr(disease.overview[0], 60)}</li>
                 <li class="table__body__row__item flex flex--a-center" style="justify-content: end">
                     <svg class="table__body__row__item__view image--icon"> <use href="#visible"></use> </svg>
-                    <svg class="table__body__row__item__edit image--icon"> <use href="#pencil"></use> </svg>
                     <svg class="table__body__row__item__delete image--icon"> <use href="#trash"></use> </svg>
                 </li>
             </ul>
@@ -71,7 +72,7 @@ export const fomratDiseaseSearch = (diseases) => {
         formated += `
             <div class="card search__list__item">
                 <div class="card__header">
-                    <h4><a href="/${disease.urlSafeName}">${disease.name}</a></h4>
+                    <h4><a href="/v/${disease.urlSafeName}">${disease.name}</a></h4>
                     <p>${shortenStr(disease.overview[0], 55)}</p>
                     <div class="flex flex--a-center margin--top-2">
                         ${showSymptoms(disease.symptoms)}

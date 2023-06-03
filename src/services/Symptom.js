@@ -30,4 +30,12 @@ module.exports = class SymptomService {
             return res_wrap;
         } catch (e) { throw e }
     }
+
+    static async symptomDelete (res_wrap, body) {
+        try {
+            res_wrap.symptoms = await Symptom.delete(body.symptomId);
+
+            return res_wrap;
+        } catch (e) { throw e }
+    }
 }

@@ -4,22 +4,15 @@
             <img src="/assets/illustrations/logo.svg" alt="logo">
             <a href="/">
                 <h4>MEDIBIRD</h4>
-                <p>Be mindful</p>
+                <p>Administrator portal</p>
             </a>
         </div>
         <form class="auth__main__form card">
             <div class="card__header card__header--no-border">
-                <p>Sign up</p>
+                <p>Sign in</p>
             </div>
             <div class="card__body">
                 <p id="auth-error" style="color: darkred; margin-bottom: 1rem; font-weight: bold;" class="hide">err</p>
-                <div class="input">
-                    <input type="text" id="fullname" placeholder="Full name">
-                </div>
-
-                <div class="input">
-                    <input type="text" id="username" placeholder="Username">
-                </div>
 
                 <div class="input">
                     <input type="email" id="email-address" placeholder="Email address">
@@ -28,17 +21,12 @@
                 <div class="input">
                     <input type="password" id="password" placeholder="Password">
                 </div>
-
-                <div class="input">
-                    <input type="password" id="password-again" placeholder="Password confirmation">
-                </div>
             </div>
             <div class="card__footer card__footer--no-border">
                 <button class="btn btn--primary">Sign in</button>
             </div>
         </form>
         <div class="auth__main__footer flex flex--j-space-around">
-            <p>Have an account? <a href="/sign-in">Sign in</a></p>
             <p>Terms of use</p>
             <p>Privacy policy</p>
         </div>
@@ -47,11 +35,11 @@
 
 <script src="/assets/js/dist/jquery.js"></script>
 <script type="module">
-    import User from "/assets/js/src/auth/User.js"
+    import Admin from "/assets/js/src/auth/Admin.js"
 
     $('.auth__main__form').on('submit', e => {
         e.preventDefault();
 
-        User.signUp();
+        Admin.signIn();
     });
 </script>

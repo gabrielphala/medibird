@@ -195,6 +195,7 @@ li {
 .container__main {
   position: relative;
   padding-left: 30rem;
+  transition: padding 0.3s ease-in;
 }
 .container__main--sidenav-closed {
   padding-left: 5.5rem;
@@ -208,7 +209,7 @@ li {
 .container__main__title__hr {
   height: 2px;
   width: 15rem;
-  background-color: #3f7bde;
+  background-color: #f50057;
   margin: 1rem 0 3rem;
 }
 .container__main__center {
@@ -245,6 +246,26 @@ li {
   width: 60%;
   margin: 0 auto;
 }
+@media (max-width: 1000px) {
+  .container__home__main--search {
+    width: 75%;
+  }
+}
+@media (max-width: 860px) {
+  .container__home__main--search {
+    width: 85%;
+  }
+}
+@media (max-width: 750px) {
+  .container__home__main--search {
+    width: 100%;
+  }
+}
+@media (max-width: 550px) {
+  .container__home__main .search__list {
+    grid-template-columns: 1fr;
+  }
+}
 .container__home__main__details__text {
   flex: 1;
   margin-right: 2rem;
@@ -266,6 +287,7 @@ li {
 .container__showcase {
   position: relative;
   color: #fff;
+  padding-top: 5rem;
 }
 .container__showcase__background {
   height: 45rem;
@@ -276,6 +298,11 @@ li {
   left: 5rem;
   bottom: 3rem;
 }
+@media (max-width: 668px) {
+  .container__showcase__caption {
+    bottom: 10rem;
+  }
+}
 .container__showcase__caption h1 {
   flex-direction: column;
   font-size: 3.5rem;
@@ -285,6 +312,15 @@ li {
   right: 5rem;
   bottom: 3rem;
 }
+@media (max-width: 668px) {
+  .container__showcase__browse {
+    right: unset;
+    left: 5rem;
+  }
+  .container__showcase__browse h4 {
+    text-align: left !important;
+  }
+}
 .container__showcase__browse h4 {
   margin-bottom: 1rem;
   text-align: right;
@@ -292,6 +328,11 @@ li {
 .container__explore {
   width: 60rem;
   margin: 11rem auto 3rem;
+}
+@media (max-width: 668px) {
+  .container__explore {
+    width: 90%;
+  }
 }
 .container__explore__title {
   margin-bottom: 3rem;
@@ -310,6 +351,11 @@ li {
   border-radius: 6px;
   overflow: hidden;
 }
+@media (max-width: 568px) {
+  .container__explore__diseases__item {
+    flex-direction: column;
+  }
+}
 .container__explore__diseases__item:not(:last-child) {
   margin-bottom: 2rem;
 }
@@ -319,8 +365,28 @@ li {
 .container__explore__diseases__item:nth-child(odd) .container__explore__diseases__item__details {
   order: 2;
 }
+@media (max-width: 568px) {
+  .container__explore__diseases__item:nth-child(odd) .container__explore__diseases__item__details {
+    order: 2;
+  }
+}
 .container__explore__diseases__item:nth-child(odd) .container__explore__diseases__item__background {
   order: 1;
+}
+@media (max-width: 568px) {
+  .container__explore__diseases__item:nth-child(odd) .container__explore__diseases__item__background {
+    order: 1;
+  }
+}
+@media (max-width: 568px) {
+  .container__explore__diseases__item:nth-child(even) .container__explore__diseases__item__details {
+    order: 2;
+  }
+}
+@media (max-width: 568px) {
+  .container__explore__diseases__item:nth-child(even) .container__explore__diseases__item__background {
+    order: 1;
+  }
 }
 .container__explore__diseases__item__details {
   flex: 1;
@@ -459,7 +525,7 @@ li {
 }
 .table__header__row__item {
   font-family: "Poppins Medium", "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  color: #004cc9;
+  color: #9a0137;
 }
 .table__body__row {
   color: #7b7b7b;
@@ -578,12 +644,14 @@ li {
   height: 5rem;
   padding: 0 3rem;
   z-index: 100;
+  transition: width 0.3s ease-in;
 }
 .header-admin--sidenav-closed {
   width: calc(100% - 5.5rem);
 }
 .header-admin__left svg {
   margin-right: 2rem;
+  cursor: pointer;
   fill: #909090;
 }
 .header-admin__left h4 {
@@ -598,6 +666,7 @@ li {
   height: 5rem;
   padding: 0 5rem;
   z-index: 100;
+  background-color: #fcfcfc;
 }
 .header-main__left img {
   width: 3rem;
@@ -606,7 +675,6 @@ li {
 .header-main__left h4 {
   text-transform: uppercase;
   letter-spacing: 4px;
-  color: #706e6e;
 }
 .sidenav {
   position: fixed;
@@ -618,6 +686,7 @@ li {
   color: #979797;
   padding: 1.1rem 0.4rem;
   z-index: 1;
+  transition: width 0.3s ease-in;
 }
 .sidenav--closed {
   width: 5.5rem;

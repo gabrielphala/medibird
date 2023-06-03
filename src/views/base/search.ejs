@@ -6,7 +6,7 @@
             <h1>Search</h1>
             <p>Search diseases & conditions</p>
         </div>
-        <div class="container__home__main">
+        <div class="container__home__main container__home__main--search">
             <div class="search flex flex--a-center">
                 <div class="search__box">
                     <div class="input">
@@ -26,8 +26,13 @@
 <script src="/assets/js/dist/jquery.js"></script>
 <script type="module">
     import Disease from "/assets/js/src/auth/Disease.js"
+    import setGreetings from "/assets/js/src/helpers/greetings.js"
 
     $('#search-query').on('keyup', e => {
         Disease.search(e.currentTarget.value);
-    })
+    });
+
+    $('#sign-out-btn').show()
+
+    setGreetings()
 </script>

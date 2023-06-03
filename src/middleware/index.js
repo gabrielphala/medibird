@@ -1,7 +1,10 @@
 const jwt = require('../helpers/Jwt');
 
-module.exports.isUserAuth = (req, res, next) => {
-    if (!req.store || req.store && !req.store.user)
+module.exports.isUserOrAdminAuth = (req, res, next) => {
+    const userNotLoggedIn = !req.store || req.store && !req.store.user,
+        adminNotLoggedIn = !req.store || req.store && !req.store.admin;
+
+    if (userNotLoggedIn && adminNotLoggedIn)
         return res.redirect('/sign-in');
 
     next();

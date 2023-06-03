@@ -1,7 +1,7 @@
 const path = require('path');
 const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
-const databseConfig = require('../config/database')
+const init = require('../config/init')
 
 module.exports = (app, router) => {
     app.set('view engine', 'ejs');
@@ -16,4 +16,6 @@ module.exports = (app, router) => {
     const routes = require('../api/routes');
 
     routes(router);
+
+    init();
 };

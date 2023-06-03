@@ -23,11 +23,28 @@ export default class Symptom {
         showError('new-symptom', response.error);
     }
 
+    static async deleteSymptom (symptomid) {
+        const response = await fetch('/symptom/delete', {
+            body: {
+                symptomId: symptomid
+            }
+        });
+
+        Symptom.getAll();
+    }
+
     static async getAll () {
         const response = await fetch('/symptoms/get-all');
 
         if (arrayNotEmpty(response.symptoms)) {
             $('#symptom-list').html(formatSymptomsForAdmin(response.symptoms));
+
+            $('.table__body__row__item__delete').on('click', e => {
+                const symptomid = e.currentTarget.parentElement.parentElement.dataset.symptomid;
+
+                Symptom.deleteSymptom(symptomid);
+            })
+
             return $('#no-symptoms').hide();
         }
 

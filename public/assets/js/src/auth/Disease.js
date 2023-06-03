@@ -156,7 +156,7 @@ export default class Disease {
             $('.table__body__row__item__view').on('click', e => {
                 const urlsafename = e.currentTarget.parentElement.parentElement.dataset.urlsafename;
 
-                location.href = `/${urlsafename}`;
+                location.href = `/v/${urlsafename}`;
             })
 
             $('.table__body__row__item__delete').off()

@@ -12,10 +12,17 @@ module.exports = (class BaseController {
         });
     };
 
-    logout = (req, res) => {
-        res.clearCookie('fi_user')
+    admin_sign_out = (req, res) => {
+        res.clearCookie('med_admin')
 
-        return res.redirect('/login')
+        return res.redirect('/a/sign-in')
+    }
+
+    sign_out = (req, res) => {
+        res.clearCookie('med_user')
+        res.clearCookie('med_admin')
+
+        return res.redirect('/sign-in')
     }
 
     wrap = (service_method) => (req, res) => {

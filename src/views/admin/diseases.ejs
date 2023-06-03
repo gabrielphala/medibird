@@ -243,4 +243,20 @@
 
     Slider.nextHeightControl();
     Disease.getAll();
+
+    let action;
+
+    $('.header-admin__left__toggle-sidenav').on('click', e => {
+        const sidenav = $('.sidenav')[0];
+
+        if (Array.from(sidenav.classList).includes('sidenav--closed')) {
+            $('.sidenav').removeClass('sidenav--closed')
+            $('.header-admin').removeClass('header-admin--sidenav-closed')
+            return $('.container__main').removeClass('container__main--sidenav-closed');
+        }
+
+        $('.sidenav').addClass('sidenav--closed')
+        $('.header-admin').addClass('header-admin--sidenav-closed')
+        return $('.container__main').addClass('container__main--sidenav-closed');
+    })
 </script> 

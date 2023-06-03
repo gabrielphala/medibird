@@ -2,6 +2,7 @@
     &__main{
         position: relative;
         padding-left: 30rem;
+        transition: padding .3s ease-in;
 
         &--sidenav-closed{
             padding-left: 5.5rem;
@@ -17,7 +18,7 @@
             &__hr{
                 height: 2px;
                 width: 15rem;
-                background-color: #3f7bde;
+                background-color: #f50057;
                 margin: 1rem 0 3rem;
             }
         }
@@ -66,6 +67,26 @@
             width: 60%;
             margin: 0 auto;
 
+            &--search{
+                .breakpoint(1000px, {
+                    width: 75%;
+                });
+
+                .breakpoint(860px, {
+                    width: 85%;
+                });
+
+                .breakpoint(750px, {
+                    width: 100%;
+                });
+            }
+
+            .search__list{
+                .breakpoint(550px, {
+                    grid-template-columns: 1fr;
+                })
+            }
+
             &__details{
                 &__text{
                     flex: 1;
@@ -100,6 +121,7 @@
     &__showcase{
         position: relative;
         color: #fff;
+        padding-top: 5rem;
 
         &__background{
             height: 45rem;
@@ -110,6 +132,10 @@
             position: absolute;
             left: 5rem;
             bottom: 3rem;
+
+            .breakpoint(@MTABLET, {
+                bottom: 10rem;
+            });
             
             h1{
                 flex-direction: column;
@@ -122,6 +148,15 @@
             right: 5rem;
             bottom: 3rem;
 
+            .breakpoint(@MTABLET, {
+                right: unset;
+                left: 5rem;
+
+                h4{
+                    text-align: left !important;
+                }
+            });
+
             h4{
                 margin-bottom: 1rem;
                 text-align: right;
@@ -132,6 +167,10 @@
     &__explore{
         width: 60rem;
         margin: 11rem auto 3rem;
+
+        .breakpoint(@MTABLET, {
+            width: 90%
+        });
 
         &__title{
             margin-bottom: 3rem;
@@ -152,6 +191,10 @@
                 min-height: 2rem;
                 border-radius: 6px;
                 overflow: hidden;
+
+                .breakpoint(@STABLET, {
+                    flex-direction: column;
+                });
                 
                 &:not(:last-child){
                     margin-bottom: 2rem;
@@ -162,10 +205,32 @@
 
                     .container__explore__diseases__item__details{
                         order: 2;
+
+                        .breakpoint(@STABLET, {
+                            order: 2;
+                        });
                     }
 
                     .container__explore__diseases__item__background{
                         order: 1;
+
+                        .breakpoint(@STABLET, {
+                            order: 1;
+                        });
+                    }
+                }
+
+                &:nth-child(even){
+                    .container__explore__diseases__item__details{
+                        .breakpoint(@STABLET, {
+                            order: 2;
+                        });
+                    }
+
+                    .container__explore__diseases__item__background{
+                        .breakpoint(@STABLET, {
+                            order: 1;
+                        });
                     }
                 }
 
